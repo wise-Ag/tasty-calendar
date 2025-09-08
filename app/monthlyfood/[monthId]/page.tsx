@@ -1,3 +1,4 @@
+"use client";
 const MonthlyFood = async () => {
   const res = await fetch(
     `http://api.nongsaro.go.kr/service/monthFd/monthNewFdLst/?apiKey=20250908CQKM6OXUVP569KHIARHHA&thisYear=2018&thisMonth=1`,
@@ -9,7 +10,7 @@ const MonthlyFood = async () => {
   return (
     <div>
       data fetch test
-      <div>{data}</div>;
+      <div>data</div>;
     </div>
   );
 };
