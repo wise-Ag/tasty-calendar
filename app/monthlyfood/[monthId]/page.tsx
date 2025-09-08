@@ -9,7 +9,7 @@ const MonthlyFood = async () => {
   return (
     <div>
       data fetch test
-      <div>data</div>;
+      <div>{data}</div>;
     </div>
   );
 };
