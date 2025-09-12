@@ -16,10 +16,9 @@ export const getMFYear = async () => {
     const json = await parseStringPromise(xml, {});
 
     const yearArr = json.response.body[0].items[0].item;
-    const yearData: string[] = [];
-    yearArr.forEach((v: { year: Array<string> }) => {
-      yearData.push(v.year[0]);
-    });
+    const yearData: string[] = yearArr.map(
+      (v: { year: string[] }) => v.year[0]
+    );
 
     return yearData;
   } catch (err) {
@@ -28,29 +27,14 @@ export const getMFYear = async () => {
 };
 
 //요청 월 식재료, 레시피 가져오기
-export const getMonthlyFood = async (month: number) => {
-  try {
-    const yearData = await getMFYear();
-    if (yearData)
-      yearData.forEach(async (v) => {
-        const foodRes = await fetch(
-          `${BASE_URL}/monthFdmtLst?apiKey=${process.env.MONTHLY_FOOD_DATA_KEY}&thisYear=${v}&thisMonth=${month}`
-        );
-      });
-    const foodRes = await fetch(
-      `${BASE_URL}/monthFdmtLst?apiKey=${process.env.MONTHLY_FOOD_DATA_KEY}`
-    );
-  } catch (err) {}
-};
-
-export const test = async () => {
+export const getMonthlyFood = async (month: string | number) => {
   try {
     const yearData = await getMFYear();
     if (!yearData) return;
     const rawData = await Promise.all(
       yearData.map(async (v) => {
         const json = await fetch(
-          `${BASE_URL}/monthFdmtLst?apiKey=${process.env.MONTHLY_FOOD_DATA_KEY}&thisYear=${v}&thisMonth=07`
+          `${BASE_URL}/monthFdmtLst?apiKey=${process.env.MONTHLY_FOOD_DATA_KEY}&thisYear=${v}&thisMonth=${month}`
         )
           .then(async (res) => await res.text())
           .then(async (xml) => await parseStringPromise(xml, {}));
@@ -61,9 +45,9 @@ export const test = async () => {
 
     const data: MonthlyFood[] = rawData.flat();
     return data;
-
   } catch (err) {
     console.log("err", err);
+    return null;
   }
 };
 
@@ -76,6 +60,19 @@ export const getRecipe = async () => {
       .then(async (xml) => await parseStringPromise(xml, {}));
 
     console.log(json);
+  } catch (err) {
+    console.error("err", err);
+  }
+};
+
+export const getMonthlyFoodDetail = async () => {
+  try {
+    const json = await fetch(
+      `${BASE_URL}/monthFdmtDtl?apiKey=${process.env.MONTHLY_FOOD_DATA_KEY}&cntntsNo=98818`
+    )
+      .then(async (res) => await res.text())
+      .then(async (xml) => await parseStringPromise(xml, {}));
+    return json?.response;
   } catch (err) {
     console.error("err", err);
   }

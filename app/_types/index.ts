@@ -1,4 +1,4 @@
-export interface MonthlyFood {
+export interface MonthlyFoodType {
   cntntsNo: string[];
   fdmtNm: string[];
   fdmtSeCode: string[];

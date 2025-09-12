@@ -1,9 +1,11 @@
-import { getRecipe, test } from "@/app/_api";
+import { getMonthlyFood, getRecipe, getMonthlyFoodDetail } from "@/app/_api";
+
 const MonthlyFood = async () => {
-  const data = await test();
+  //   const data = await getRecipe();
+  const foodDetail = await getMonthlyFoodDetail();
   //   const recipe = await getRecipe();
   //   console.log(data);
-  console.log("re", data);
+  console.log("re", foodDetail);
   return (
     <div>
       data fetch test
