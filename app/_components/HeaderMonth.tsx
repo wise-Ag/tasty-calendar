@@ -13,6 +13,7 @@ const HeaderMonth = () => {
         return (
           <Link
             className={clsx(
+              "mr-5",
               pathname === `/monthlyfood/${v}`
                 ? "text-orange-400"
                 : "text-gray-600"

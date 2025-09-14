@@ -41,7 +41,11 @@ const MonthFood = ({ data }: { data: MonthlyFoodType[] }) => {
               />
             </button>
           )}
-          <div className={"grid grid-cols-4 grid-rows-2 gap-15 "}>
+          <div
+            className={
+              "grid sm:grid-cols-1 sm:grid-row-1 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-2 gap-15 "
+            }
+          >
             {foodData?.map((v) => {
               if (!v) return;
               const imgURL = getImagePath(
@@ -55,7 +59,7 @@ const MonthFood = ({ data }: { data: MonthlyFoodType[] }) => {
                     width={300}
                     height={200}
                     alt={"식재료 이미지"}
-                    className={"rounded-xl cursor-pointer "}
+                    className={"rounded-xl cursor-pointer sm:width-full"}
                   />
                   <div className={"text-center p-3"}>{v.fdmtNm[0]}</div>
                 </div>
