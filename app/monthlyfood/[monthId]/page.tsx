@@ -6,7 +6,7 @@ interface PageProps {
   params: { monthId: string };
 }
 
-const MonthlyFood = async ({ params }: PageProps) => {
+const MonthlyFoodPage = async ({ params }: PageProps) => {
   const monthId = params.monthId.padStart(2, "0");
   const foodData = await getMonthlyFood(monthId);
   const recipeData = await getRecipe(monthId);
@@ -19,4 +19,4 @@ const MonthlyFood = async ({ params }: PageProps) => {
   );
 };
 
-export default MonthlyFood;
+export default MonthlyFoodPage;

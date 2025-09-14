@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { getImagePath } from "@/app/_utils/getImagePath";
 import { MonthlyFoodType } from "@/app/_types";
+import Link from "next/link";
 
 const MonthFood = ({ data }: { data: MonthlyFoodType[] }) => {
   const [foodData, setFoodData] = useState<MonthlyFoodType[]>([]);
@@ -54,13 +55,15 @@ const MonthFood = ({ data }: { data: MonthlyFoodType[] }) => {
               );
               return (
                 <div key={v.cntntsNo[0]}>
-                  <Image
-                    src={imgURL}
-                    width={400}
-                    height={300}
-                    alt={"식재료 이미지"}
-                    className={"rounded-xl cursor-pointer sm:width-full"}
-                  />
+                  <Link href={`/foodDetail/${v.cntntsNo}`}>
+                    <Image
+                      src={imgURL}
+                      width={400}
+                      height={300}
+                      alt={"식재료 이미지"}
+                      className={"rounded-xl cursor-pointer sm:width-full"}
+                    />
+                  </Link>
                   <div className={"text-center p-3"}>{v.fdmtNm[0]}</div>
                 </div>
               );

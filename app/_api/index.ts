@@ -77,14 +77,14 @@ export const getRecipe = async (month: string) => {
 };
 
 //식재료 디테일
-export const getMonthlyFoodDetail = async () => {
+export const getFoodDetail = async (foodId: string) => {
   try {
     const json = await fetch(
-      `${BASE_URL}/monthFdmtDtl?apiKey=${process.env.MONTHLY_FOOD_DATA_KEY}&cntntsNo=98818`
+      `${BASE_URL}/monthFdmtDtl?apiKey=${process.env.MONTHLY_FOOD_DATA_KEY}&cntntsNo=${foodId}`
     )
       .then(async (res) => await res.text())
       .then(async (xml) => await parseStringPromise(xml, {}));
-    return json?.response;
+    return json?.response.body[0].item[0];
   } catch (err) {
     console.error("err", err);
   }
