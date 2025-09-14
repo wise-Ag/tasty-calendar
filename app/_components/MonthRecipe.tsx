@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { RecipeType } from "@/app/_types";
 import Image from "next/image";
 import { getImagePath } from "@/app/_utils/getImagePath";
+import Link from "next/link";
 
 const MonthRecipe = ({ data }: { data: RecipeType[] }) => {
   const [recipeData, setRecipeData] = useState<RecipeType[]>();
@@ -31,13 +32,15 @@ const MonthRecipe = ({ data }: { data: RecipeType[] }) => {
                 key={v.cntntsNo[0]}
                 className="flex flex-col justify-content-center items-center"
               >
-                <Image
-                  src={imgURL}
-                  width={400}
-                  height={200}
-                  alt={"식재료 이미지"}
-                  className="rounded-xl cursor-pointer"
-                />
+                <Link href={`/recipeDetail/${v.cntntsNo}`}>
+                  <Image
+                    src={imgURL}
+                    width={400}
+                    height={200}
+                    alt={"식재료 이미지"}
+                    className="rounded-xl cursor-pointer"
+                  />
+                </Link>
                 <div className="pt-3">{v.fdNm[0]}</div>
               </div>
             );

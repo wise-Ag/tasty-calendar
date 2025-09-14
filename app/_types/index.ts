@@ -38,3 +38,32 @@ export interface FoodDetailType {
   rtnStreFileNm: string;
   rtnThumbFileNm: string;
 }
+
+export interface RecipeDetailType {
+  ckngMthInfo: string[];
+  ckngmhrlsUntInfo: string[];
+  clciQy: string[];
+  crbQy: string[];
+  edblfibrQy: string[];
+  energyQy: string[];
+  fdNm: string[];
+  grpMlsvApplcInfo: string[];
+  irnQy: string[];
+  matrlInfo: string[];
+  naQy: string[];
+  niboplaQy: string[];
+  ntrfsQy: string[];
+  phphmntNm: string[];
+  protQy: string[];
+  ptssQy: string[];
+  rmInfo: string[];
+  rtnFileCours: string[];
+  rtnImageDc: string[];
+  rtnImgSeCode: string[];
+  rtnStreFileNm: string[];
+  rtnThumbFileNm: string[];
+  thiaQy: string[];
+  vtcQy: string[];
+  vteQy: string[];
+  vtmaQy: string[];
+}
