@@ -43,7 +43,8 @@ export const getMonthlyFood = async (month: string | number) => {
       })
     );
 
-    const data: MonthlyFoodType[] = rawData.flat();
+    const data: MonthlyFoodType[] = rawData.flatMap((v) => (v ? v : []));
+
     return data;
   } catch (err) {
     console.log("err", err);
@@ -67,7 +68,7 @@ export const getRecipe = async (month: string) => {
       })
     );
 
-    const data:RecipeType[] = rawData.flat();
+    const data: RecipeType[] = rawData.flatMap((v) => (v ? v : []));
 
     return data;
   } catch (err) {

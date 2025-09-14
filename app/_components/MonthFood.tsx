@@ -8,7 +8,7 @@ import { MonthlyFoodType } from "@/app/_types";
 const MonthFood = ({ data }: { data: MonthlyFoodType[] }) => {
   const [foodData, setFoodData] = useState<MonthlyFoodType[]>([]);
   const [page, setPage] = useState<number>(0);
-  const PAGE_SIZE = 6;
+  const PAGE_SIZE = 8;
   const MAX_PAGE = Math.floor(data.length / PAGE_SIZE);
 
   const getNextPage = () => {
