@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <div className="flex items-center">
+    <div className="flex items-center space-between ">
       <Link href="/">
         <Image
           src={"/icons/tasty_calendar-logo.png"}

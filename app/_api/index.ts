@@ -1,6 +1,6 @@
 //공공데이터 가공
 
-import { MonthlyFood } from "@/app/_types";
+import { MonthlyFoodType, RecipeType } from "@/app/_types";
 import { parseStringPromise } from "xml2js";
 // let yearData: string[] = [];
 const BASE_URL = process.env.MONTHLY_FOOD_DATA_URL;
@@ -43,7 +43,7 @@ export const getMonthlyFood = async (month: string | number) => {
       })
     );
 
-    const data: MonthlyFood[] = rawData.flat();
+    const data: MonthlyFoodType[] = rawData.flat();
     return data;
   } catch (err) {
     console.log("err", err);
@@ -51,15 +51,25 @@ export const getMonthlyFood = async (month: string | number) => {
   }
 };
 
-export const getRecipe = async () => {
+export const getRecipe = async (month: string) => {
   try {
-    const json = await fetch(
-      `${BASE_URL}/monthNewFdLst?apiKey=${process.env.MONTHLY_FOOD_DATA_KEY}&thisYear=2015&thisMonth=07`
-    )
-      .then(async (res) => await res.text())
-      .then(async (xml) => await parseStringPromise(xml, {}));
+    const yearData = await getMFYear();
+    if (!yearData) return;
+    const rawData = await Promise.all(
+      yearData.map(async (year) => {
+        const json = await fetch(
+          `${BASE_URL}/monthNewFdLst?apiKey=${process.env.MONTHLY_FOOD_DATA_KEY}&thisYear=${year}&thisMonth=${month}`
+        )
+          .then(async (res) => await res.text())
+          .then(async (xml) => await parseStringPromise(xml, {}));
 
-    console.log(json);
+        return json?.response.body[0]?.items[0]?.item;
+      })
+    );
+
+    const data:RecipeType[] = rawData.flat();
+
+    return data;
   } catch (err) {
     console.error("err", err);
   }
