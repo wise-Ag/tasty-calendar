@@ -1,15 +1,20 @@
-import { getMonthlyFood, getRecipe, getMonthlyFoodDetail } from "@/app/_api";
+import { getMonthlyFood, getRecipe } from "@/app/_api";
+import MonthFood from "@/app/_components/MonthFood";
+import MonthRecipe from "@/app/_components/MonthRecipe";
 
-const MonthlyFood = async () => {
-  //   const data = await getRecipe();
-  const foodDetail = await getMonthlyFoodDetail();
-  //   const recipe = await getRecipe();
-  //   console.log(data);
-  console.log("re", foodDetail);
+interface PageProps {
+  params: { monthId: string };
+}
+
+const MonthlyFood = async ({ params }: PageProps) => {
+  const monthId = params.monthId.padStart(2, "0");
+  const foodData = await getMonthlyFood(monthId);
+  const recipeData = await getRecipe(monthId);
+
   return (
     <div>
-      data fetch test
-      <div>data</div>;
+      {foodData && <MonthFood data={foodData} />}
+      {recipeData && <MonthRecipe data={recipeData} />}
     </div>
   );
 };

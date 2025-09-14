@@ -56,8 +56,8 @@ const MonthFood = ({ data }: { data: MonthlyFoodType[] }) => {
                 <div key={v.cntntsNo[0]}>
                   <Image
                     src={imgURL}
-                    width={300}
-                    height={200}
+                    width={400}
+                    height={300}
                     alt={"식재료 이미지"}
                     className={"rounded-xl cursor-pointer sm:width-full"}
                   />

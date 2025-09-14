@@ -2,7 +2,6 @@
 
 import { MonthlyFoodType, RecipeType } from "@/app/_types";
 import { parseStringPromise } from "xml2js";
-// let yearData: string[] = [];
 const BASE_URL = process.env.MONTHLY_FOOD_DATA_URL;
 
 //이달의 음식 등록된 년도 가져오기
@@ -52,6 +51,7 @@ export const getMonthlyFood = async (month: string | number) => {
   }
 };
 
+//레시피 요청
 export const getRecipe = async (month: string) => {
   try {
     const yearData = await getMFYear();
@@ -76,6 +76,7 @@ export const getRecipe = async (month: string) => {
   }
 };
 
+//식재료 디테일
 export const getMonthlyFoodDetail = async () => {
   try {
     const json = await fetch(
@@ -84,6 +85,14 @@ export const getMonthlyFoodDetail = async () => {
       .then(async (res) => await res.text())
       .then(async (xml) => await parseStringPromise(xml, {}));
     return json?.response;
+  } catch (err) {
+    console.error("err", err);
+  }
+};
+
+//레시피 디테일
+export const getRecipeDetail = async () => {
+  try {
   } catch (err) {
     console.error("err", err);
   }
