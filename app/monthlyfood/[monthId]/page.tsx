@@ -3,11 +3,12 @@ import MonthFood from "@/app/_components/MonthFood";
 import MonthRecipe from "@/app/_components/MonthRecipe";
 
 interface PageProps {
-  params: { monthId: string };
+  params: Promise<{ monthId: string }>;
 }
 
 const MonthlyFoodPage = async ({ params }: PageProps) => {
-  const monthId = params.monthId.padStart(2, "0");
+  const monthIdParam = await params;
+  const monthId = monthIdParam.monthId.padStart(2, "0");
   const foodData = await getMonthlyFood(monthId);
   const recipeData = await getRecipe(monthId);
 

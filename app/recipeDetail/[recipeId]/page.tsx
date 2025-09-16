@@ -8,7 +8,7 @@ interface PageProps {
 const RecipeDetailPage = async ({ params }: PageProps) => {
   const recipeDetailData = await getRecipeDetail(params.recipeId);
 
-  return <>{recipeDetailData && <RecipeDetail data={recipeDetailData} />}</>;
+  // return <>{recipeDetailData && <RecipeDetail data={recipeDetailData} />}</>;
 };
 
 export default RecipeDetailPage;
