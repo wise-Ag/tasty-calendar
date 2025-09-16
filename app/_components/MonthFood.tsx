@@ -29,12 +29,14 @@ const MonthFood = ({ data }: { data: MonthlyFoodType[] }) => {
 
   return (
     <div>
-      <div className="justify-content-left text-3xl pl-10">이달의 음식</div>
+      <div className="justify-content-left text-3xl ml-30 mb-5">
+        이달의 음식
+      </div>
       <div className="flex flex-col justify-content-center items-center">
         <div className="flex  justify-content-center items-center">
           {MAX_PAGE !== 0 && (
             <button
-              className={"cursor-pointer p-20"}
+              className={"cursor-pointer m-10"}
               onClick={() => getPrevPage()}
             >
               <Image
@@ -58,15 +60,16 @@ const MonthFood = ({ data }: { data: MonthlyFoodType[] }) => {
               );
               return (
                 <div key={v.cntntsNo[0]}>
-                  <Link href={`/foodDetail/${v.cntntsNo}`}>
-                    <Image
-                      src={imgURL}
-                      width={400}
-                      height={300}
-                      alt={"식재료 이미지"}
-                      className={"rounded-xl cursor-pointer sm:width-full"}
-                    />
-                  </Link>
+                  <div className="relative w-70 h-60">
+                    <Link href={`/foodDetail/${v.cntntsNo}`}>
+                      <Image
+                        src={imgURL}
+                        fill
+                        alt={"식재료 이미지"}
+                        className={"rounded-xl cursor-pointer sm:width-full"}
+                      />
+                    </Link>
+                  </div>
                   <div className={"text-center p-3"}>{v.fdmtNm[0]}</div>
                 </div>
               );
@@ -74,7 +77,7 @@ const MonthFood = ({ data }: { data: MonthlyFoodType[] }) => {
           </div>
           {MAX_PAGE !== 0 && (
             <button
-              className={"cursor-pointer p-20"}
+              className={"cursor-pointer m-10"}
               onClick={() => getNextPage()}
             >
               <Image

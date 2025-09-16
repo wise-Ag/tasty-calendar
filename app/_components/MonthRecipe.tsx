@@ -26,7 +26,11 @@ const MonthRecipe = ({ data }: { data: RecipeType[] }) => {
     <div className="bg-orange-100">
       <div className="flex text-3xl pl-10 pt-20">이달의 레시피</div>
       <div className="flex flex-col justify-content-center items-center">
-        <div className={"grid grid-cols-3 grid-rows-2 gap-15 p-4 "}>
+        <div
+          className={
+            "grid  grid sm:grid-cols-1 sm:grid-row-1 md:grid-cols-3 lg:grid-cols-3 lg:grid-row-2 grid-rows-2 gap-15 p-4 "
+          }
+        >
           {recipeData?.map((v) => {
             if (!v) return;
             const imgURL = getImagePath(v.rtnFileCours[0], v.rtnThumbFileNm[0]);
@@ -35,15 +39,16 @@ const MonthRecipe = ({ data }: { data: RecipeType[] }) => {
                 key={v.cntntsNo[0]}
                 className="flex flex-col justify-content-center items-center"
               >
-                <Link href={`/recipeDetail/${v.cntntsNo}`}>
-                  <Image
-                    src={imgURL}
-                    width={400}
-                    height={200}
-                    alt={"식재료 이미지"}
-                    className="rounded-xl cursor-pointer"
-                  />
-                </Link>
+                <div className="w-100 h-75 relative">
+                  <Link href={`/recipeDetail/${v.cntntsNo}`}>
+                    <Image
+                      src={imgURL}
+                      fill
+                      alt={"식재료 이미지"}
+                      className="rounded-xl cursor-pointer"
+                    />
+                  </Link>
+                </div>
                 <div className="pt-3">{v.fdNm[0]}</div>
               </div>
             );
