@@ -6,9 +6,12 @@ import { getImagePath } from "@/app/_utils/getImagePath";
 import Link from "next/link";
 
 const MonthRecipe = ({ data }: { data: RecipeType[] }) => {
-  const [recipeData, setRecipeData] = useState<RecipeType[]>();
-  const [page, setPage] = useState<number>(0);
   const PAGE_SIZE = 9;
+  const [recipeData, setRecipeData] = useState<RecipeType[]>(
+    data.slice(0, PAGE_SIZE)
+  );
+  const [page, setPage] = useState<number>(0);
+
   const MAX_PAGE = Math.floor(data.length / PAGE_SIZE);
 
   const getMoreData = () => {
