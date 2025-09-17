@@ -11,6 +11,7 @@ const MonthlyFoodPage = async ({ params }: PageProps) => {
   const monthId = monthIdParam.monthId.padStart(2, "0");
   const foodData = await getMonthlyFood(monthId);
   const recipeData = await getRecipe(monthId);
+  
 
   return (
     <div>

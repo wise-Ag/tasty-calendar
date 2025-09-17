@@ -91,7 +91,7 @@ export const getFoodDetail = async (foodId: string) => {
 };
 
 //레시피 디테일
-export const getRecipeDetail = async (recipeId:string) => {
+export const getRecipeDetail = async (recipeId: string) => {
   try {
     const json = await fetch(
       `${BASE_URL}/monthNewFdDtl?apiKey=${process.env.MONTHLY_FOOD_DATA_KEY}&cntntsNo=${recipeId}`

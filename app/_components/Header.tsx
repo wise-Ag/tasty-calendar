@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <div className="flex items-center space-between w-screen">
+    <div className="flex p-4 pr-10 items-center justify-between w-screen">
       <Link href="/">
         <Image
           src={"/icons/tasty_calendar-logo.png"}
