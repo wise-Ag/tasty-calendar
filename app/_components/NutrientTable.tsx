@@ -21,7 +21,7 @@ const NutrientTable = ({ data }: { data: RecipeDetailType }) => {
 
   return (
     <div>
-      <h2 className="text-lg font-medium mb-3">조리도구</h2>
+      <h2 className="text-600 font-medium mb-3">조리도구</h2>
       <div className="flex flex-wrap gap-2">
         {tools.map((tool, i) => (
           <span
@@ -34,7 +34,7 @@ const NutrientTable = ({ data }: { data: RecipeDetailType }) => {
       </div>
 
       <h3 className="text-md font-medium mt-6">영양정보 (1인분 기준)</h3>
-      <table className="w-full mt-2 text-sm">
+      <table className="w-full mt-2 text-[18px]">
         <tbody>
           {nutrients.map((v, i) => (
             <tr className="border-t" key={i}>

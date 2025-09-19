@@ -1,18 +1,17 @@
 import IngredientTable from "@/app/_components/IngredientTable";
 import NutrientTable from "@/app/_components/NutrientTable";
+import RecipeMethod from "@/app/_components/RecipeMethod";
 import { RecipeDetailType } from "@/app/_types";
 import { getImagePath, getNImagePath } from "@/app/_utils/getImagePath";
 import Image from "next/image";
 
 const RecipeDetail = ({ data }: { data: RecipeDetailType }) => {
-  const recipeSequence = data.ckngMthInfo[0].split(/\d+\./).filter(Boolean);
-
   return (
     <div className="md:col-span-2 p-6 flex flex-col gap-4 lg:pl-20 lg:pr-20">
       <header className="flex flex-col items-center gap-4">
         <Image
           src={getImagePath(data.rtnFileCours[0], data.rtnThumbFileNm[0])}
-          width={300}
+          width={400}
           height={300}
           alt="레시피 완성사진"
           className="rounded-3xl"
@@ -29,43 +28,9 @@ const RecipeDetail = ({ data }: { data: RecipeDetailType }) => {
       </header>
       <section className="grid md:grid-cols-2 gap-6 mt-2">
         <IngredientTable data={data} />
-        {/* <Image
-          src={getNImagePath(data.rtnFileCours[0], data.rtnThumbFileNm[0], 1)}
-          width={500}
-          height={500}
-          alt="레시피 완성사진"
-          className="rounded-3xl"
-        /> */}
         <NutrientTable data={data} />
       </section>
-      {recipeSequence.map((v, i) => {
-        return (
-          <div key={i}>
-            {i + 1}. {v}
-            {i === recipeSequence.length - 1 ? (
-              <Image
-                src={getImagePath(data.rtnFileCours[0], data.rtnThumbFileNm[0])}
-                width={500}
-                height={500}
-                alt="레시피 완성사진"
-                className="rounded-3xl"
-              />
-            ) : (
-              <Image
-                src={getNImagePath(
-                  data.rtnFileCours[0],
-                  data.rtnThumbFileNm[0],
-                  i + 2
-                )}
-                width={500}
-                height={500}
-                alt="레시피 완성사진"
-                className="rounded-3xl"
-              />
-            )}
-          </div>
-        );
-      })}
+      <RecipeMethod data={data} />
     </div>
   );
 };
