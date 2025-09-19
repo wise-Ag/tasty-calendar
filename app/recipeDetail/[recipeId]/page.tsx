@@ -9,7 +9,7 @@ const RecipeDetailPage = async ({ params }: PageProps) => {
   const { recipeId } = await params;
   const recipeDetailData = await getRecipeDetail(recipeId);
 
-  // return <>{recipeDetailData && <RecipeDetail data={recipeDetailData} />}</>;
+  return <>{recipeDetailData && <RecipeDetail data={recipeDetailData} />}</>;
 };
 
 export default RecipeDetailPage;

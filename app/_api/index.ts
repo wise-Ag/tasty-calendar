@@ -98,6 +98,7 @@ export const getRecipeDetail = async (recipeId: string) => {
     )
       .then(async (res) => await res.text())
       .then(async (xml) => await parseStringPromise(xml, {}));
+    console.log(json?.response.body[0].item[0]);
     return json?.response.body[0].item[0];
   } catch (err) {
     console.error("err", err);

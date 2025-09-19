@@ -19,6 +19,7 @@ const InfoContainer = ({ title, data }: { title: string; data: string }) => {
         {title}
       </span>
       <p>{prettySentence(data)}</p>
+      <hr className="border-0 h-px bg-gradient-to-r from-transparent via-black/75 to-transparent mt-10" />
     </div>
   );
 };
@@ -48,6 +49,7 @@ const FoodDetail = ({ data }: { data: FoodDetailType }) => {
       <div className="flex flex-col gap-[50]">
         <InfoContainer title="영양성분 & 효능" data={data.ntrIrdntEfcyDtl[0]} />
         <InfoContainer title="특징 & 구입요령" data={data.prchCheatDtl[0]} />
+
         <InfoContainer title="기타 정보" data={data.etcInfoDtl[0]} />
         <InfoContainer title="유래" data={data.ctvtIndcDtl[0]} />
         <InfoContainer title="관련 연구 정보" data={data.rltRsrchInfoDtl[0]} />
