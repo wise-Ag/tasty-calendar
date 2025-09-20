@@ -1,3 +1,3 @@
-import { Jua } from "next/font/google";
+import { Noto_Sans } from "next/font/google";
 
-export const mainFont = Jua({ subsets: ["latin"], weight: "400" });
+export const mainFont = Noto_Sans({ subsets: ["latin"], weight: "700" });

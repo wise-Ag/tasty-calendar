@@ -1,18 +1,24 @@
-"use client";
-const MonthlyFood = async () => {
-  const res = await fetch(
-    `https://api.nongsaro.go.kr/service/monthFd/monthFdmtLst/?apiKey=20250903O4UYV81YYUL9F90I6GIUTQ&thisYear=2018&thisMonth=1`,
-    { method: "GET", headers: { "Content-Type": "application/json" } }
-  );
-  const data = res.json();
-  console.log(data);
+import { getMonthlyFood, getRecipe } from "@/app/_api";
+import MonthFood from "@/app/_components/MonthFood";
+import MonthRecipe from "@/app/_components/MonthRecipe";
+
+interface PageProps {
+  params: Promise<{ monthId: string }>;
+}
+
+const MonthlyFoodPage = async ({ params }: PageProps) => {
+  const monthIdParam = await params;
+  const monthId = monthIdParam.monthId.padStart(2, "0");
+  const foodData = await getMonthlyFood(monthId);
+  const recipeData = await getRecipe(monthId);
+  
 
   return (
     <div>
-      data fetch test
-      <div>data</div>;
+      {foodData && <MonthFood data={foodData} />}
+      {recipeData && <MonthRecipe data={recipeData} />}
     </div>
   );
 };
 
-export default MonthlyFood;
+export default MonthlyFoodPage;

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { mainFont } from "@/app/_styles/fonts";
 import "./_styles/globals.css";
+import Header from "@/app/_components/Header";
+import Bottom from "@/app/_components/Bottom";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,7 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${mainFont.className} antialiased`}>{children}</body>
+      <body className={`${mainFont.className} antialiased `}>
+        <Header />
+        {children}
+        <Bottom />
+      </body>
     </html>
   );
 }
