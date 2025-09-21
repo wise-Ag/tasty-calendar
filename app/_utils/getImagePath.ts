@@ -11,6 +11,6 @@ export const getNImagePath = (
   index: number
 ) => {
   return (
-    BASE_IMG_URL + fileCours.split("|")[index] + "/" + fileNm.split("|")[index]
+    fileCours.split("|")[index]? BASE_IMG_URL + fileCours.split("|")[index] + "/" + fileNm.split("|")[index]:null
   );
 };

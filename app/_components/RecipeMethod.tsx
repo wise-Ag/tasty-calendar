@@ -31,11 +31,13 @@ const RecipeMethod = ({ data }: { data: RecipeDetailType }) => {
                 />
               ) : (
                 <Image
-                  src={getNImagePath(
-                    data.rtnFileCours[0],
-                    data.rtnThumbFileNm[0],
-                    i + 2
-                  )}
+                  src={
+                    getNImagePath(
+                      data.rtnFileCours[0],
+                      data.rtnThumbFileNm[0],
+                      i + 2
+                    ) ?? "/icons/no-recipe-img.png"
+                  }
                   width={500}
                   height={500}
                   alt="레시피 완성사진"
