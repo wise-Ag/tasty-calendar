@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const RecipeMethod = ({ data }: { data: RecipeDetailType }) => {
   const recipeSequence = data.ckngMthInfo[0].split(/\d+\.\s/).filter(Boolean);
-  console.log("re", recipeSequence);
+
   return (
     <section>
       <h2 className="text-xl font-medium">만드는 법</h2>

@@ -1,6 +1,7 @@
 import IngredientTable from "@/app/_components/IngredientTable";
 import NutrientTable from "@/app/_components/NutrientTable";
 import RecipeMethod from "@/app/_components/RecipeMethod";
+import ShareButton from "@/app/_components/ShareButton";
 import { RecipeDetailType } from "@/app/_types";
 import { getImagePath } from "@/app/_utils/getImagePath";
 import Image from "next/image";
@@ -31,10 +32,8 @@ const RecipeDetail = ({ data }: { data: RecipeDetailType }) => {
         <NutrientTable data={data} />
       </section>
       <RecipeMethod data={data} />
-      <div className="mt-6 flex gap-3">
-        <button className="px-4 py-2 rounded-md bg-orange-500 text-white hover:bg-orange-200 cursor-pointer">
-          레시피 공유
-        </button>
+      <div className="mt-6 ">
+        <ShareButton thumbnailPath ={getImagePath(data.rtnFileCours[0], data.rtnThumbFileNm[0])} recipeName = {data.fdNm[0]}/>
       </div>
     </div>
   );
