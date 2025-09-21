@@ -25,13 +25,16 @@ const InfoContainer = ({ title, data }: { title: string; data: string }) => {
 };
 
 const FoodDetail = ({ data }: { data: FoodDetailType }) => {
+  const imgURL = data.rtnThumbFileNm[0]
+    ? getImagePath(data.rtnFileCours[0], data.rtnThumbFileNm[0])
+    : "/icons/no-food-img.png";
   return (
     <div className="flex flex-col justify-content-center items-center p-10 pl-50 pr-50 font-[500] gap-[50]">
       <span className="text-[40px] font-[800]">{data.fdmtNm}</span>
       <div id="container" className="flex gap-[50px] items-center">
         <div className="width-[70px] height-[70px]">
           <Image
-            src={getImagePath(data.rtnFileCours[0], data.rtnThumbFileNm[0])}
+            src={imgURL}
             width={500}
             height={300}
             alt={"식재료 이미지"}

@@ -5,8 +5,10 @@ import { useEffect, useState } from "react";
 import { getImagePath } from "@/app/_utils/getImagePath";
 import { MonthlyFoodType } from "@/app/_types";
 import Link from "next/link";
+import NoImage from "@/app/_components/NoImage";
 
 const MonthFood = ({ data }: { data: MonthlyFoodType[] }) => {
+  console.log(data);
   const PAGE_SIZE = 8;
   const [foodData, setFoodData] = useState<MonthlyFoodType[]>(
     data.slice(0, PAGE_SIZE)
@@ -54,10 +56,9 @@ const MonthFood = ({ data }: { data: MonthlyFoodType[] }) => {
           >
             {foodData?.map((v) => {
               if (!v) return;
-              const imgURL = getImagePath(
-                v.rtnFileCours[0],
-                v.rtnThumbFileNm[0]
-              );
+              const imgURL = v.rtnThumbFileNm[0]
+                ? getImagePath(v.rtnFileCours[0], v.rtnThumbFileNm[0])
+                : "/icons/no-food-img.png";
               return (
                 <div key={v.cntntsNo[0]}>
                   <div className="relative w-70 h-60">

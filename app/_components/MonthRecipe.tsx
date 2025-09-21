@@ -33,7 +33,10 @@ const MonthRecipe = ({ data }: { data: RecipeType[] }) => {
         >
           {recipeData?.map((v) => {
             if (!v) return;
-            const imgURL = getImagePath(v.rtnFileCours[0], v.rtnThumbFileNm[0]);
+
+            const imgURL = v.rtnThumbFileNm[0]
+              ? getImagePath(v.rtnFileCours[0], v.rtnThumbFileNm[0])
+              : "/icons/no-recipe-img.png";
             return (
               <div
                 key={v.cntntsNo[0]}

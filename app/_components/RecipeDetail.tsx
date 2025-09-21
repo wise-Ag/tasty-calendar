@@ -7,11 +7,14 @@ import { getImagePath } from "@/app/_utils/getImagePath";
 import Image from "next/image";
 
 const RecipeDetail = ({ data }: { data: RecipeDetailType }) => {
+  const imgURL = data.rtnThumbFileNm[0]
+    ? getImagePath(data.rtnFileCours[0], data.rtnThumbFileNm[0])
+    : "/icons/no-recipe-img.png";
   return (
     <div className="md:col-span-2 p-6 flex flex-col gap-4 lg:pl-20 lg:pr-20">
       <header className="flex flex-col items-center gap-4">
         <Image
-          src={getImagePath(data.rtnFileCours[0], data.rtnThumbFileNm[0])}
+          src={imgURL}
           width={400}
           height={300}
           alt="레시피 완성사진"
@@ -33,7 +36,7 @@ const RecipeDetail = ({ data }: { data: RecipeDetailType }) => {
       </section>
       <RecipeMethod data={data} />
       <div className="mt-6 ">
-        <ShareButton thumbnailPath ={getImagePath(data.rtnFileCours[0], data.rtnThumbFileNm[0])} recipeName = {data.fdNm[0]}/>
+        <ShareButton thumbnailPath={imgURL} recipeName={data.fdNm[0]} />
       </div>
     </div>
   );
