@@ -70,7 +70,7 @@ export const getRecipe = async (month: string) => {
 
     const data: RecipeType[] = rawData.flatMap((v) => (v ? v : []));
 
-    return data;
+    return data.filter((v) => v.fdSeCode[0] === "290001");
   } catch (err) {
     console.error("err", err);
   }
