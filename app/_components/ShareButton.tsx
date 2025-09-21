@@ -3,7 +3,21 @@ import Script from "next/script";
 
 declare global {
   interface Window {
-    Kakao: any;
+    Kakao: {
+      init: (key: string) => void;
+      isInitialized: () => boolean;
+      Share: {
+        sendDefault: (config: {
+          objectType: string;
+          content: {
+            title: string;
+            description: string;
+            imageUrl: string;
+            link: { webUrl: string; mobileWebUrl: string };
+          };
+        }) => void;
+      };
+    };
   }
 }
 
@@ -35,7 +49,7 @@ const ShareButton = ({
         onError={(e: Error) => {
           console.error("Script fail error", e);
         }}
-        onLoad={() => {
+        onLoad={() => {if(process.env.NEXT_PUBLIC_KAKAO_SHARE_KEY)
           window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_SHARE_KEY);
         }}
       />
