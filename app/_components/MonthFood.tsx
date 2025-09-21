@@ -5,10 +5,9 @@ import { useEffect, useState } from "react";
 import { getImagePath } from "@/app/_utils/getImagePath";
 import { MonthlyFoodType } from "@/app/_types";
 import Link from "next/link";
-import NoImage from "@/app/_components/NoImage";
 
 const MonthFood = ({ data }: { data: MonthlyFoodType[] }) => {
-  console.log(data);
+
   const PAGE_SIZE = 8;
   const [foodData, setFoodData] = useState<MonthlyFoodType[]>(
     data.slice(0, PAGE_SIZE)
