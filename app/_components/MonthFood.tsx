@@ -5,23 +5,26 @@ import { useEffect, useState } from "react";
 import { getImagePath } from "@/app/_utils/getImagePath";
 import { MonthlyFoodType } from "@/app/_types";
 import Link from "next/link";
+import clsx from "clsx";
 
 const MonthFood = ({ data }: { data: MonthlyFoodType[] }) => {
-
   const PAGE_SIZE = 8;
   const [foodData, setFoodData] = useState<MonthlyFoodType[]>(
     data.slice(0, PAGE_SIZE)
   );
   const [page, setPage] = useState<number>(0);
+  const [direction, setDirection] = useState<"left" | "right" | "none">("none");
 
   const MAX_PAGE = Math.floor(data.length / PAGE_SIZE);
 
   const getNextPage = () => {
     page === MAX_PAGE ? setPage(0) : setPage(page + 1);
+    setDirection("right");
   };
 
   const getPrevPage = () => {
     page === 0 ? setPage(MAX_PAGE) : setPage(page - 1);
+    setDirection("left");
   };
 
   useEffect(() => {
@@ -49,9 +52,15 @@ const MonthFood = ({ data }: { data: MonthlyFoodType[] }) => {
             </button>
           )}
           <div
-            className={
-              "grid sm:grid-cols-1 sm:grid-row-1 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-2 gap-15 "
-            }
+            key={page}
+            className={clsx(
+              `grid sm:grid-cols-1 sm:grid-row-1 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-2 gap-15`,
+              direction === "none"
+                ? ""
+                : direction === "right"
+                ? "animate-slide-right"
+                : "animate-slide-left"
+            )}
           >
             {foodData?.map((v) => {
               if (!v) return;
