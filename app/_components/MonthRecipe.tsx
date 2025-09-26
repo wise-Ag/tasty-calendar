@@ -49,6 +49,8 @@ const MonthRecipe = ({ data }: { data: RecipeType[] }) => {
                       fill
                       alt={"식재료 이미지"}
                       className="rounded-xl cursor-pointer"
+                      placeholder="blur"
+                      blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
                     />
                   </Link>
                 </div>

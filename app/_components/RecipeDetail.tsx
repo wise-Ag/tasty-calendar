@@ -19,6 +19,8 @@ const RecipeDetail = ({ data }: { data: RecipeDetailType }) => {
           height={300}
           alt="레시피 완성사진"
           className="rounded-3xl"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
         />
         <div>
           <h1 className="text-3xl font-semibold">{data.fdNm[0]}</h1>

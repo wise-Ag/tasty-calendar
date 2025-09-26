@@ -34,6 +34,8 @@ const IngredientTable = ({ data }: { data: RecipeDetailType }) => {
           height={200}
           alt="레시피 완성사진"
           className="rounded-3xl"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
         />
       </div>
 

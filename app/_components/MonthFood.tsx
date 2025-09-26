@@ -6,6 +6,7 @@ import { getImagePath } from "@/app/_utils/getImagePath";
 import { MonthlyFoodType } from "@/app/_types";
 import Link from "next/link";
 import clsx from "clsx";
+import MonthFoodSkeleton from "@/app/_components/MonthFoodSkeleton";
 
 const MonthFood = ({ data }: { data: MonthlyFoodType[] }) => {
   const PAGE_SIZE = 8;
@@ -63,56 +64,62 @@ const MonthFood = ({ data }: { data: MonthlyFoodType[] }) => {
               />
             </button>
           )}
-          <div className="flex-1 relative w-full lg:h-200 md:h-200 sm:h-900 overflow-hidden">
-            {foodList?.map((list, i) => {
-              let position = "-translate-x-full";
+          {!foodList ? (
+            <MonthFoodSkeleton />
+          ) : (
+            <div className="flex-1 relative w-full lg:h-200 md:h-200 sm:h-900 overflow-hidden">
+              {foodList?.map((list, i) => {
+                let position = "-translate-x-full";
 
-              if (page === i)
-                position =
-                  direction === "left"
-                    ? "animate-slide-left"
-                    : "animate-slide-right";
-              if (prevPage === i)
-                position =
-                  direction === "left"
-                    ? "animate-slideout-left"
-                    : "animate-slideout-right";
+                if (page === i)
+                  position =
+                    direction === "left"
+                      ? "animate-slide-left"
+                      : "animate-slide-right";
+                if (prevPage === i)
+                  position =
+                    direction === "left"
+                      ? "animate-slideout-left"
+                      : "animate-slideout-right";
 
-              return (
-                <div
-                  key={i}
-                  className={clsx(
-                    `absolute inset-0 grid sm:grid-cols-1 sm:grid-row-1 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-2 gap-15 `,
-                    direction === "none" && page === i ? "" : position
-                  )}
-                >
-                  {list?.map((v) => {
-                    if (!v) return;
-                    const imgURL = v.rtnThumbFileNm[0]
-                      ? getImagePath(v.rtnFileCours[0], v.rtnThumbFileNm[0])
-                      : "/icons/no-food-img.png";
-                    return (
-                      <div key={v.cntntsNo[0]}>
-                        <div className="relative w-full aspect-[4/3]">
-                          <Link href={`/foodDetail/${v.cntntsNo}`}>
-                            <Image
-                              src={imgURL}
-                              fill
-                              alt={"식재료 이미지"}
-                              className={
-                                "rounded-xl cursor-pointer sm:width-full"
-                              }
-                            />
-                          </Link>
+                return (
+                  <div
+                    key={i}
+                    className={clsx(
+                      `absolute inset-0 grid sm:grid-cols-1 sm:grid-row-1 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-2 gap-15 `,
+                      direction === "none" && page === i ? "" : position
+                    )}
+                  >
+                    {list?.map((v) => {
+                      if (!v) return;
+                      const imgURL = v.rtnThumbFileNm[0]
+                        ? getImagePath(v.rtnFileCours[0], v.rtnThumbFileNm[0])
+                        : "/icons/no-food-img.png";
+                      return (
+                        <div key={v.cntntsNo[0]}>
+                          <div className="relative w-full aspect-[4/3]">
+                            <Link href={`/foodDetail/${v.cntntsNo}`}>
+                              <Image
+                                src={imgURL}
+                                fill
+                                alt={"식재료 이미지"}
+                                className={
+                                  "rounded-xl cursor-pointer sm:width-full"
+                                }
+                                placeholder="blur"
+                                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
+                              />
+                            </Link>
+                          </div>
+                          <div className={"text-center p-3"}>{v.fdmtNm[0]}</div>
                         </div>
-                        <div className={"text-center p-3"}>{v.fdmtNm[0]}</div>
-                      </div>
-                    );
-                  })}
-                </div>
-              );
-            })}
-          </div>
+                      );
+                    })}
+                  </div>
+                );
+              })}
+            </div>
+          )}
           {MAX_PAGE !== 0 && (
             <button
               className={"cursor-pointer m-10 w-10"}
