@@ -16,7 +16,7 @@
   --animate-slide-right: right 0.7s ease forwards;
   --animate-slideout-left: left-out 0.7s ease forwards;
   --animate-slideout-right: right-out 0.7s ease forwards;
-  @keyframes left {
+  @keyframes right {
     0% {
       transform: translateX(100%);
     }
@@ -40,7 +40,7 @@
       transform: translateX(-100%);
     }
   }
-  @keyframes right {
+  @keyframes left {
     0% {
       transform: translateX(-100%);
     }

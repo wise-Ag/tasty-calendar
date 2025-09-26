@@ -63,7 +63,7 @@ const MonthFood = ({ data }: { data: MonthlyFoodType[] }) => {
               />
             </button>
           )}
-          <div className="flex-1 relative w-full h-200 overflow-hidden">
+          <div className="flex-1 relative w-full lg:h-200 md:h-200 sm:h-900 overflow-hidden">
             {foodList?.map((list, i) => {
               let position = "-translate-x-full";
 
@@ -74,7 +74,7 @@ const MonthFood = ({ data }: { data: MonthlyFoodType[] }) => {
                     : "animate-slide-right";
               if (prevPage === i)
                 position =
-                  direction === "right"
+                  direction === "left"
                     ? "animate-slideout-left"
                     : "animate-slideout-right";
 
