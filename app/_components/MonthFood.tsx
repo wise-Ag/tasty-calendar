@@ -41,7 +41,6 @@ const MonthFood = ({ data }: { data: MonthlyFoodType[] }) => {
       );
     }
     setFoodList(foodListData);
-    console.log(foodListData);
   }, []);
 
   return (
