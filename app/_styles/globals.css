@@ -14,12 +14,30 @@
 @theme {
   --animate-slide-left: left 0.7s ease forwards;
   --animate-slide-right: right 0.7s ease forwards;
+  --animate-slideout-left: left-out 0.7s ease forwards;
+  --animate-slideout-right: right-out 0.7s ease forwards;
   @keyframes left {
     0% {
       transform: translateX(100%);
     }
     100% {
       transform: translateX(0%);
+    }
+  }
+  @keyframes left-out {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  @keyframes right-out {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
     }
   }
   @keyframes right {
