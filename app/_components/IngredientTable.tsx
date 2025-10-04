@@ -24,7 +24,9 @@ const IngredientTable = ({ data }: { data: RecipeDetailType }) => {
   return (
     <div>
       <div className="flex justify-between">
-        <h2 className="text-[28px] font-500 mb-3">재료</h2>
+        <h2 className="lg:text-[28px] md:text-[25px] sm:text-[20px] font-500 mb-3">
+          재료
+        </h2>
         <Image
           src={
             getNImagePath(data.rtnFileCours[0], data.rtnThumbFileNm[0], 1) ??

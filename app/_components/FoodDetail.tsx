@@ -9,10 +9,12 @@ const prettySentence = (paragraph: string) => {
 const InfoContainer = ({ title, data }: { title: string; data: string }) => {
   return (
     <div className="flex flex-col whitespace-pre-line gap-3">
-      <span className="flex margin-[10] font-[700] text-[27px] text-slate-800">
+      <span className="flex margin-[10] font-[700] lg:text-[30px] md:text-[30px] sm:text-[25px] text-slate-800">
         {title}
       </span>
-      <p className="text-slate-700">{prettySentence(data)}</p>
+      <p className="text-slate-700 lg:text-[25px] md:text-[25px] sm:text-[20px]">
+        {prettySentence(data)}
+      </p>
     </div>
   );
 };
@@ -38,8 +40,12 @@ const FoodDetail = ({ data }: { data: FoodDetailType }) => {
           />
         </div>
         <div>
-          <div className="text-[40px] font-[800] mb-[20]">{data.fdmtNm}</div>
-          <p className="whitespace-pre-line">{data.cstdyMthDtl}</p>
+          <div className="lg:text-[40px] md:text-[35px] sm:text-[25px] font-[800] lg:mb-[20] md:mb-[18] sm:mb-[10]">
+            {data.fdmtNm}
+          </div>
+          <p className="whitespace-pre-line lg:text-[25px] md:text-[25px] sm:text-[20px] ">
+            {data.cstdyMthDtl}
+          </p>
         </div>
       </div>
 
