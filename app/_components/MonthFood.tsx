@@ -97,11 +97,12 @@ const MonthFood = ({ data }: { data: MonthlyFoodType[] }) => {
                         : "/icons/no-food-img.png";
                       return (
                         <div key={v.cntntsNo[0]}>
-                          <div className="relative w-full aspect-[4/3]">
-                            <Link href={`/foodDetail/${v.cntntsNo}`}>
+                          <Link href={`/foodDetail/${v.cntntsNo}`}>
+                            <div className="relative w-full aspect-[4/3]">
                               <Image
                                 src={imgURL}
                                 fill
+                                sizes="w-100 h-auto"
                                 alt={"식재료 이미지"}
                                 className={
                                   "rounded-xl cursor-pointer sm:width-full"
@@ -109,8 +110,8 @@ const MonthFood = ({ data }: { data: MonthlyFoodType[] }) => {
                                 placeholder="blur"
                                 blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
                               />
-                            </Link>
-                          </div>
+                            </div>
+                          </Link>
                           <div className={"text-center p-3"}>{v.fdmtNm[0]}</div>
                         </div>
                       );
