@@ -11,7 +11,7 @@ const RecipeMethod = ({ data }: { data: RecipeDetailType }) => {
       <ol className="mt-4 space-y-6">
         {recipeSequence.map((v, i) => {
           return (
-            <li 
+            <li
               key={i}
               className="flex gap-4 items-start justify-between lg:flex-row md:flex-col sm:flex-col"
             >
@@ -32,7 +32,7 @@ const RecipeMethod = ({ data }: { data: RecipeDetailType }) => {
                   width={500}
                   height={500}
                   alt="레시피 완성사진"
-                  className="rounded-3xl min-w-120 w-auto  h-auto"
+                  className="rounded-3xl min-w-70 w-auto  h-auto"
                   placeholder="blur"
                   blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
                 />
@@ -48,7 +48,7 @@ const RecipeMethod = ({ data }: { data: RecipeDetailType }) => {
                   width={500}
                   height={500}
                   alt="레시피 과정사진"
-                  className="rounded-3xl min-w-120 w-auto h-auto"
+                  className="rounded-3xl lg:min-w-100 sm:min-w-70 w-auto h-auto"
                   placeholder="blur"
                   blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
                 />
