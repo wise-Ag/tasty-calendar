@@ -46,14 +46,14 @@ const MonthFood = ({ data }: { data: MonthlyFoodType[] }) => {
 
   return (
     <div>
-      <div className="justify-content-left text-3xl ml-30 mb-5">
+      <div className="justify-content-left lg:text-3xl md:text-2xl sm:text-xl ml-30 mb-5">
         이달의 음식
       </div>
       <div className="flex flex-col justify-content-center items-center">
         <div className="flex w-full h-full justify-content-center items-center">
           {MAX_PAGE !== 0 && (
             <button
-              className={"cursor-pointer m-10 w-10"}
+              className={"cursor-pointer lg:m-10 md:m-8 sm:m-4 w-10"}
               onClick={() => getPrevPage()}
             >
               <Image
@@ -67,7 +67,7 @@ const MonthFood = ({ data }: { data: MonthlyFoodType[] }) => {
           {!foodList ? (
             <MonthFoodSkeleton />
           ) : (
-            <div className="flex-1 relative w-full lg:h-200 md:h-200 sm:h-900 overflow-hidden">
+            <div className="flex-1 relative w-full lg:h-200 md:h-200 sm:h-600 overflow-hidden">
               {foodList?.map((list, i) => {
                 let position = "-translate-x-full";
 
@@ -86,7 +86,7 @@ const MonthFood = ({ data }: { data: MonthlyFoodType[] }) => {
                   <div
                     key={i}
                     className={clsx(
-                      `absolute inset-0 grid sm:grid-cols-1 sm:grid-row-1 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-2 gap-15 `,
+                      `absolute inset-0 grid sm:grid-cols-1 sm:grid-row-1 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-2 lg:gap-15 md:gap-15 sm:gap-5`,
                       direction === "none" && page === i ? "" : position
                     )}
                   >
@@ -96,23 +96,33 @@ const MonthFood = ({ data }: { data: MonthlyFoodType[] }) => {
                         ? getImagePath(v.rtnFileCours[0], v.rtnThumbFileNm[0])
                         : "/icons/no-food-img.png";
                       return (
-                        <div key={v.cntntsNo[0]}>
-                          <Link href={`/foodDetail/${v.cntntsNo}`}>
-                            <div className="relative w-full aspect-[4/3]">
+                        <div
+                          key={v.cntntsNo[0]}
+                          className="flex flex-col items-center"
+                        >
+                          <Link
+                            href={`/foodDetail/${v.cntntsNo}`}
+                            className="lg:w-full md:w-full sm:w-[254px]"
+                          >
+                            <div className="relative w-full aspect-[4/3] ">
                               <Image
                                 src={imgURL}
                                 fill
-                                sizes="w-100 h-auto"
+                                sizes="w-[100px] h-[100px]"
                                 alt={"식재료 이미지"}
-                                className={
-                                  "rounded-xl cursor-pointer sm:width-full"
-                                }
+                                className={"rounded-xl  cursor-pointer"}
                                 placeholder="blur"
                                 blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
                               />
                             </div>
                           </Link>
-                          <div className={"text-center p-3"}>{v.fdmtNm[0]}</div>
+                          <div
+                            className={
+                              "text-center p-3 lg:text-3xl md:text-xl sm:text-xl"
+                            }
+                          >
+                            {v.fdmtNm[0]}
+                          </div>
                         </div>
                       );
                     })}
@@ -123,7 +133,7 @@ const MonthFood = ({ data }: { data: MonthlyFoodType[] }) => {
           )}
           {MAX_PAGE !== 0 && (
             <button
-              className={"cursor-pointer m-10 w-10"}
+              className={"cursor-pointer lg:m-10 md:m-8 sm:m-4 w-10"}
               onClick={() => getNextPage()}
             >
               <Image

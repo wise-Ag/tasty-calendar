@@ -24,11 +24,13 @@ const MonthRecipe = ({ data }: { data: RecipeType[] }) => {
 
   return (
     <div className="bg-orange-100 pb-10">
-      <div className="flex text-3xl pl-10 pt-20">이달의 레시피</div>
+      <div className="flex lg:text-3xl md:text-2xl sm:text-xl pl-10 lg:pt-20 md:pt-15 sm:pt-10">
+        이달의 레시피
+      </div>
       <div className="flex flex-col justify-content-center items-center">
         <div
           className={
-            "w-full grid sm:grid-cols-1 sm:grid-row-1 md:grid-cols-3 md:grid-row-2 lg:grid-cols-3 lg:grid-row-2 grid-rows-2 gap-x-30 gap-y-15 p-10 pl-20 pr-20"
+            "w-full grid sm:grid-cols-1 sm:grid-row-1 md:grid-cols-3 md:grid-row-2 lg:grid-cols-3 lg:grid-row-2 grid-rows-2 gap-x-30 gap-y-15 p-10 lg:pl-20 lg:pr-20 md:pl-15 md:pr-15 sm:pl-15 sm:pr-15"
           }
         >
           {recipeData?.map((v) => {
@@ -40,7 +42,7 @@ const MonthRecipe = ({ data }: { data: RecipeType[] }) => {
             return (
               <div key={v.cntntsNo[0]}>
                 <Link href={`/recipeDetail/${v.cntntsNo}`}>
-                  <div className="max-w-120 w-full aspect-[4/3] relative">
+                  <div className=" w-full aspect-[4/3] relative">
                     <Image
                       src={imgURL}
                       fill
@@ -52,14 +54,16 @@ const MonthRecipe = ({ data }: { data: RecipeType[] }) => {
                     />
                   </div>
                 </Link>
-                <div className="text-center pt-3">{v.fdNm[0]}</div>
+                <div className="text-center lg:text-3xl md:text-xl sm:text-xl pt-3">
+                  {v.fdNm[0]}
+                </div>
               </div>
             );
           })}
         </div>
         {MAX_PAGE !== page && (
           <button
-            className="cursor-pointer w-60 rounded-xl bg-orange-300 p-2 pr-5 pl-5 text-white font-size-20px"
+            className="cursor-pointer w-60 rounded-xl bg-orange-300 p-2 pr-5 pl-5 text-white font-size-20px lg:text-3xl md:text-2xl sm:text-xl"
             onClick={() => getMoreData()}
           >
             더보기
