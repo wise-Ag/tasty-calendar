@@ -23,12 +23,12 @@ const FoodDetail = ({ data }: { data: FoodDetailType }) => {
     : "/icons/no-food-img.png";
 
   return (
-    <div className="flex flex-col justify-content-center items-center p-10 pl-50 pr-50 font-[500] gap-[50] break-keep leading-[1.8]">
+    <div className="flex flex-col justify-content-center items-center p-10 lg:pl-50 lg:pr-50 md:pl-20 md:pr-20 font-[500] gap-[50] break-keep leading-[1.8]">
       <div
         id="container"
-        className="flex lg:flex-row md:flex-col gap-[50px] items-center "
+        className="flex lg:flex-row md:flex-col sm:flex-col gap-[50px] items-center "
       >
-        <div className="w-full h-full shadow-lg">
+        <div className="w-full h-full shadow-lg sm:w-90">
           <Image
             src={imgURL}
             width={500}

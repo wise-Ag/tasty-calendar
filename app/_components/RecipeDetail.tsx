@@ -11,7 +11,7 @@ const RecipeDetail = ({ data }: { data: RecipeDetailType }) => {
     ? getImagePath(data.rtnFileCours[0], data.rtnThumbFileNm[0])
     : "/icons/no-recipe-img.png";
   return (
-    <div className="md:col-span-2 p-6 flex flex-col gap-4 lg:pl-20 lg:pr-20">
+    <div className="md:col-span-2 p-6 flex  flex-col gap-4 lg:pl-20 lg:pr-20 md:pl-15 md:pr-15 sm:pl-13 sm:pr-13">
       <header className="flex flex-col items-center gap-4">
         <Image
           src={imgURL}

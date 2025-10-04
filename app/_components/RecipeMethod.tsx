@@ -11,12 +11,17 @@ const RecipeMethod = ({ data }: { data: RecipeDetailType }) => {
       <ol className="mt-4 space-y-6">
         {recipeSequence.map((v, i) => {
           return (
-            <li key={i} className="flex gap-4 items-start">
-              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-orange-400 text-white flex items-center justify-center font-semibold">
-                {i + 1}
-              </div>
-              <div className="flex-1">
-                <p className="text-slate-700 mb-2">{v}</p>
+            <li 
+              key={i}
+              className="flex gap-4 items-start justify-between lg:flex-row md:flex-col sm:flex-col"
+            >
+              <div className="flex gap-5">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-orange-400 text-white flex items-center justify-center font-semibold">
+                  {i + 1}
+                </div>
+                <div className="flex-1">
+                  <p className="text-slate-700 mb-2">{v}</p>
+                </div>
               </div>
               {i === recipeSequence.length - 1 ? (
                 <Image
@@ -27,9 +32,9 @@ const RecipeMethod = ({ data }: { data: RecipeDetailType }) => {
                   width={500}
                   height={500}
                   alt="레시피 완성사진"
-                  className="rounded-3xl"
+                  className="rounded-3xl min-w-120 w-auto  h-auto"
                   placeholder="blur"
-                                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
                 />
               ) : (
                 <Image
@@ -42,8 +47,8 @@ const RecipeMethod = ({ data }: { data: RecipeDetailType }) => {
                   }
                   width={500}
                   height={500}
-                  alt="레시피 완성사진"
-                  className="rounded-3xl"
+                  alt="레시피 과정사진"
+                  className="rounded-3xl min-w-120 w-auto h-auto"
                   placeholder="blur"
                   blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
                 />
