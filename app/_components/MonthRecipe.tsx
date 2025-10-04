@@ -23,33 +23,36 @@ const MonthRecipe = ({ data }: { data: RecipeType[] }) => {
   }, [page]);
 
   return (
-    <div className="bg-orange-100">
+    <div className="bg-orange-100 pb-10">
       <div className="flex text-3xl pl-10 pt-20">이달의 레시피</div>
       <div className="flex flex-col justify-content-center items-center">
         <div
           className={
-            "grid  grid sm:grid-cols-1 sm:grid-row-1 md:grid-cols-3 lg:grid-cols-3 lg:grid-row-2 grid-rows-2 gap-15 p-4 "
+            "w-full grid sm:grid-cols-1 sm:grid-row-1 md:grid-cols-3 md:grid-row-2 lg:grid-cols-3 lg:grid-row-2 grid-rows-2 gap-x-30 gap-y-15 p-10 pl-20 pr-20"
           }
         >
           {recipeData?.map((v) => {
             if (!v) return;
-            const imgURL = getImagePath(v.rtnFileCours[0], v.rtnThumbFileNm[0]);
+
+            const imgURL = v.rtnThumbFileNm[0]
+              ? getImagePath(v.rtnFileCours[0], v.rtnThumbFileNm[0])
+              : "/icons/no-recipe-img.png";
             return (
-              <div
-                key={v.cntntsNo[0]}
-                className="flex flex-col justify-content-center items-center"
-              >
-                <div className="w-100 h-75 relative">
-                  <Link href={`/recipeDetail/${v.cntntsNo}`}>
+              <div key={v.cntntsNo[0]}>
+                <Link href={`/recipeDetail/${v.cntntsNo}`}>
+                  <div className="max-w-120 w-full aspect-[4/3] relative">
                     <Image
                       src={imgURL}
                       fill
+                      sizes="w-100 h-auto"
                       alt={"식재료 이미지"}
                       className="rounded-xl cursor-pointer"
+                      placeholder="blur"
+                      blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
                     />
-                  </Link>
-                </div>
-                <div className="pt-3">{v.fdNm[0]}</div>
+                  </div>
+                </Link>
+                <div className="text-center pt-3">{v.fdNm[0]}</div>
               </div>
             );
           })}

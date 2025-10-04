@@ -3,12 +3,12 @@ import { getNImagePath } from "@/app/_utils/getImagePath";
 import Image from "next/image";
 
 const IngredientTable = ({ data }: { data: RecipeDetailType }) => {
-  const groupIng = data.matrlInfo[0]
-    .split("▶")
-    .filter(Boolean)
-    .map((v) => v.split(":"));
+  const rareData = data.matrlInfo[0].split("▶");
+  rareData.shift();
+
+  const groupIng = rareData.filter(Boolean).map((v) => v.split(":"));
   const Ing = groupIng.map((v) =>
-    v.map((v, i) => {
+    v.map((v: string, i: number) => {
       if (i == 0) return [v];
       return v
         .replace(/[\r\n]+/g, "")
@@ -26,11 +26,16 @@ const IngredientTable = ({ data }: { data: RecipeDetailType }) => {
       <div className="flex justify-between">
         <h2 className="text-[28px] font-500 mb-3">재료</h2>
         <Image
-          src={getNImagePath(data.rtnFileCours[0], data.rtnThumbFileNm[0], 1)}
+          src={
+            getNImagePath(data.rtnFileCours[0], data.rtnThumbFileNm[0], 1) ??
+            "/icons/no-recipe-img.png"
+          }
           width={200}
           height={200}
           alt="레시피 완성사진"
           className="rounded-3xl"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
         />
       </div>
 
