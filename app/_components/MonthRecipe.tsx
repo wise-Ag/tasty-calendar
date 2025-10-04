@@ -23,7 +23,7 @@ const MonthRecipe = ({ data }: { data: RecipeType[] }) => {
   }, [page]);
 
   return (
-    <div className="bg-orange-100">
+    <div className="bg-orange-100 pb-10">
       <div className="flex text-3xl pl-10 pt-20">이달의 레시피</div>
       <div className="flex flex-col justify-content-center items-center">
         <div
