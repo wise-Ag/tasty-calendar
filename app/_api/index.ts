@@ -9,7 +9,11 @@ export const getMFYear = async () => {
   try {
     const res = await fetch(
       `${BASE_URL}/monthFdYearLst?apiKey=${process.env.MONTHLY_FOOD_DATA_KEY}`,
-      { method: "GET", headers: { Accept: "application/xml" } }
+      {
+        cache: "force-cache",
+        method: "GET",
+        headers: { Accept: "application/xml" }
+      }
     );
     const xml = await res.text();
     const json = await parseStringPromise(xml, {});
@@ -18,6 +22,7 @@ export const getMFYear = async () => {
     const yearData: string[] = yearArr.map(
       (v: { year: string[] }) => v.year[0]
     );
+    console.log("mf called");
 
     return yearData;
   } catch (err) {
@@ -33,7 +38,8 @@ export const getMonthlyFood = async (month: string | number) => {
     const rawData = await Promise.all(
       yearData.map(async (v) => {
         const json = await fetch(
-          `${BASE_URL}/monthFdmtLst?apiKey=${process.env.MONTHLY_FOOD_DATA_KEY}&thisYear=${v}&thisMonth=${month}`
+          `${BASE_URL}/monthFdmtLst?apiKey=${process.env.MONTHLY_FOOD_DATA_KEY}&thisYear=${v}&thisMonth=${month}`,
+          { cache: "force-cache" }
         )
           .then(async (res) => await res.text())
           .then(async (xml) => await parseStringPromise(xml, {}));
@@ -43,7 +49,7 @@ export const getMonthlyFood = async (month: string | number) => {
     );
 
     const data: MonthlyFoodType[] = rawData.flatMap((v) => (v ? v : []));
-
+    console.log("alled");
     return data;
   } catch (err) {
     console.log("err", err);
@@ -59,7 +65,8 @@ export const getRecipe = async (month: string) => {
     const rawData = await Promise.all(
       yearData.map(async (year) => {
         const json = await fetch(
-          `${BASE_URL}/monthNewFdLst?apiKey=${process.env.MONTHLY_FOOD_DATA_KEY}&thisYear=${year}&thisMonth=${month}`
+          `${BASE_URL}/monthNewFdLst?apiKey=${process.env.MONTHLY_FOOD_DATA_KEY}&thisYear=${year}&thisMonth=${month}`,
+          { cache: "force-cache" }
         )
           .then(async (res) => await res.text())
           .then(async (xml) => await parseStringPromise(xml, {}));
@@ -67,7 +74,7 @@ export const getRecipe = async (month: string) => {
         return json?.response.body[0]?.items[0]?.item;
       })
     );
-
+    console.log("data called");
     const data: RecipeType[] = rawData.flatMap((v) => (v ? v : []));
 
     return data.filter((v) => v.fdSeCode[0] === "290001");
